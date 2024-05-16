@@ -14,7 +14,7 @@ export default function sendGmail(req: NextApiRequest, res: NextApiResponse) {
   const toHostMailData = {
     from: req.body.email,
     to: "karuhaxxx@gmail.com",
-    sugject: `[お問い合わせ] ${req.body.name}様より`,
+    subject: `[お問い合わせ] ${req.body.name}様より`,
     text: `${req.body.message} Send from ${req.body.email}`,
     html: `
       <p> [名前] </p>

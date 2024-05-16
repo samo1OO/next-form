@@ -8,14 +8,30 @@ import { useRef } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // console.log(nameRef.current?.value);
+
+    let data = {
+      name: nameRef.current?.value,
+      email: emailRef.current?.value,
+      message: messageRef.current?.value,
+    };
+
+    await fetch("api/contact", {
+      method: "POST",
+      headers: {
+        Accept: "application/json, text/plain",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then((res) => {
+      if (res.status === 200) console.log("メール送信成功");
+    });
   };
 
   return (
@@ -43,7 +59,13 @@ export default function Home() {
               メールアドレス
             </label>
           </div>
-          <input type="email" className="fomr-control" id="email" required ref={emailRef}/>
+          <input
+            type="email"
+            className="fomr-control"
+            id="email"
+            required
+            ref={emailRef}
+          />
           <div className="mt-3 mb-3">
             <label htmlFor="message" className="form-label">
               メッセージ
