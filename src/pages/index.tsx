@@ -10,10 +10,12 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
 
   const nameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("メール送信");
+    // console.log(nameRef.current?.value);
   };
 
   return (
@@ -41,7 +43,7 @@ export default function Home() {
               メールアドレス
             </label>
           </div>
-          <input type="email" className="fomr-control" id="email" required />
+          <input type="email" className="fomr-control" id="email" required ref={emailRef}/>
           <div className="mt-3 mb-3">
             <label htmlFor="message" className="form-label">
               メッセージ
@@ -50,6 +52,7 @@ export default function Home() {
               name="message"
               id="message"
               className="form-control"
+              ref={messageRef}
             ></textarea>
           </div>
           <button type="submit" className="btn btn-danger">
