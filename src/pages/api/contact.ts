@@ -13,7 +13,7 @@ export default function sendGmail(req: NextApiRequest, res: NextApiResponse) {
   // 管理人が受け取るメール
   const toHostMailData = {
     from: req.body.email,
-    to: "karuhaxxx@gmail.com",
+    to: "xxxx@gmail.com",
     subject: `[お問い合わせ] ${req.body.name}様より`,
     text: `${req.body.message} Send from ${req.body.email}`,
     html: `

@@ -1,8 +1,10 @@
 {
+  "homepage": "https://samo1OO.github.io/next-form/",
   "name": "contact-form",
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "deploy": "rd /s docs && npm run build && mv build docs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
